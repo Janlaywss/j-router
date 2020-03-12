@@ -1,0 +1,52 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.19.1/libexec/bin/yarn.js add webpack-dev-server
+
+PATH: 
+  /Users/janlay/.rvm/gems/ruby-2.1.10/bin:/Users/janlay/.rvm/gems/ruby-2.1.10@global/bin:/Users/janlay/.rvm/rubies/ruby-2.1.10/bin:/usr/local/opt/openssl/bin:/usr/local/opt/postgresql@10/bin:/usr/local/opt/node@12/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/usr/local/go/bin:/Users/janlay/j-router/node_modules/.bin:/Users/janlay/.rvm/bin
+
+Yarn version: 
+  1.19.1
+
+Node version: 
+  12.14.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: EINVAL: invalid argument, unlink '/Users/janlay/j-router/node_modules/is-descriptor/node_modules/kind-of'
+
+npm manifest: 
+  {
+    "name": "j-router",
+    "version": "1.0.0",
+    "description": "简陋版vue-router的实现",
+    "main": "index.js",
+    "scripts": {
+      "build": "webpack --config ./build/config.js",
+      "server": "webpack-dev-server --config ./config/dev-server.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Janlay884181317/j-router.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/Janlay884181317/j-router/issues"
+    },
+    "homepage": "https://github.com/Janlay884181317/j-router#readme",
+    "devDependencies": {
+      "html-webpack-plugin": "^3.2.0",
+      "vue": "^2.6.11",
+      "webpack": "^4.42.0",
+      "webpack-cli": "^3.3.11"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
