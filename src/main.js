@@ -11,6 +11,8 @@ class JRouter {
         this.apps = [];
         this.history = mode === 'history' ? new Html5History(this) : new HashHistory(this);
         this.matcher = new CreateMatcher(routes);
+        this.beforeHook = [];
+        this.afterHook = []
     }
 
     init(app) {
@@ -20,6 +22,8 @@ class JRouter {
 
         if (history instanceof Html5History) {
             history.transitionTo(history.getCurrentPath())
+        } else if (history instanceof HashHistory) {
+
         }
 
         history.listen((route) => {
@@ -35,6 +39,14 @@ class JRouter {
 
     push(route) {
         this.history.push(route)
+    }
+
+    beforeEach(hook) {
+        this.beforeHook.push(hook)
+    }
+
+    afterEach(hook) {
+        this.afterHook.push(hook)
     }
 }
 

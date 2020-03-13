@@ -1,3 +1,5 @@
+import {runQueue} from '../utils/async'
+
 export default class History {
     constructor(router) {
         this.router = router;
@@ -9,6 +11,8 @@ export default class History {
         this.confirmTransition(route, () => {
             this.updateState(route);
             onComplete && onComplete(route)
+        }, () => {
+            onError && onError()
         })
     }
 
@@ -17,11 +21,38 @@ export default class History {
     }
 
     confirmTransition(route, onComplete, onError) {
-        onComplete && onComplete()
+        const queue = [].concat(
+            this.router.beforeHook
+        );
+
+        const current = this.current;
+
+        const abort = () => {
+            onError && onError()
+        };
+
+        const iterator = (hook, next) => {
+            hook(route, current, (to) => {
+                if (to === false) {
+                    abort()
+                } else if (typeof to === 'object' && typeof to === 'string') {
+                    abort();
+                    this.push(to)
+                } else {
+                    next()
+                }
+            })
+        };
+
+        runQueue(queue, iterator, () => {
+            onComplete && onComplete()
+        })
     }
 
     updateState(route) {
+        const prev = this.current;
         this.current = route;
-        this.cb && this.cb(route)
+        this.cb && this.cb(route);
+        this.router.afterHook && this.router.afterHook.forEach(cb => cb(route, prev))
     }
 }
