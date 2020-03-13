@@ -12,11 +12,16 @@ export default class History {
         })
     }
 
+    listen(cb) {
+        this.cb = cb;
+    }
+
     confirmTransition(route, onComplete, onError) {
         onComplete && onComplete()
     }
 
     updateState(route) {
         this.current = route;
+        this.cb && this.cb(route)
     }
 }

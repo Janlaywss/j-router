@@ -1,5 +1,5 @@
 import History from './base'
-import { pushState } from '../utils/push-state'
+import {pushState} from '../utils/push-state'
 
 export default class HtmlHistory extends History {
     constructor(router) {
@@ -12,7 +12,6 @@ export default class HtmlHistory extends History {
 
     push(raw) {
         this.transitionTo(raw, (route) => {
-            console.log(route);
             pushState(route.name)
         })
     }

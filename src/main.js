@@ -2,10 +2,10 @@ import HashHistory from './history/hash'
 import Html5History from './history/html5'
 import CreateMatcher from './create-matcher'
 
-import { install } from './install'
+import {install} from './install'
 
 class JRouter {
-    constructor({ mode, routes }) {
+    constructor({mode, routes}) {
         // 设置路由类型
         this.mode = mode || 'history';
         this.apps = [];
@@ -21,6 +21,12 @@ class JRouter {
         if (history instanceof Html5History) {
             history.transitionTo(history.getCurrentPath())
         }
+
+        history.listen((route) => {
+            this.apps.forEach(app => {
+                app._route = route;
+            })
+        })
     }
 
     match(raw) {
