@@ -10,7 +10,16 @@ new Vue({
     render() {
         return (
             <div>
-                <router-view />
+                <div>
+                    <router-link to={{ name: 'Home' }}>去Home</router-link>
+                    &nbsp;
+                    |
+                    &nbsp;
+                    <router-link to={{ name: 'about' }}>去about</router-link>
+                </div>
+                <div style="margin-top: 10px">
+                    <router-view />
+                </div>
             </div>
         )
     }

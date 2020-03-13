@@ -12,6 +12,7 @@ export default class HtmlHistory extends History {
 
     push(raw) {
         this.transitionTo(raw, (route) => {
+            console.log(route);
             pushState(route.name)
         })
     }
