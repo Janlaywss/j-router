@@ -26,6 +26,10 @@ class JRouter {
     match(raw) {
         return this.matcher.match(raw)
     }
+
+    push(route) {
+        this.history.push(route)
+    }
 }
 
 JRouter.install = install;

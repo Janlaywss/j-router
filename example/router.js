@@ -1,5 +1,7 @@
 import JRouter from 'j-router/main.js'
 import Vue from 'vue'
+import Index from './index'
+import About from './about'
 
 Vue.use(JRouter)
 
@@ -7,10 +9,12 @@ const routes = [
     {
         path: '/',
         name: 'Home',
+        component: Index
     },
     {
         path: '/about',
         name: 'about',
+        component: About
     }
 ]
 

@@ -10,7 +10,7 @@ new Vue({
     render() {
         return (
             <div>
-                <Index />
+                <router-view />
             </div>
         )
     }

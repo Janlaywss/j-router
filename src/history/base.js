@@ -7,15 +7,16 @@ export default class History {
     transitionTo(raw, onComplete, onError) {
         const route = this.router.match(raw);
         this.confirmTransition(route, () => {
-            this.pushState(route)
+            this.updateState(route);
+            onComplete && onComplete(route)
         })
     }
 
     confirmTransition(route, onComplete, onError) {
-
+        onComplete && onComplete()
     }
 
-    pushState() {
-
+    updateState(route) {
+        this.current = route;
     }
 }

@@ -1,3 +1,5 @@
+import RouterView from './components/router-view'
+
 export function install(Vue) {
     Vue.mixin({
         beforeCreate() {
@@ -20,6 +22,8 @@ export function install(Vue) {
                     return this._routerRoot._route
                 }
             })
+
+            Vue.component('router-view', RouterView)
         }
     })
 }
