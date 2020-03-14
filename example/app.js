@@ -18,7 +18,9 @@ new Vue({
                     <router-link to={{ name: 'about' }}>去about</router-link>
                 </div>
                 <div style="margin-top: 10px">
-                    <router-view />
+                    <keep-alive-janlay>
+                        <router-view />
+                    </keep-alive-janlay>
                 </div>
             </div>
         )

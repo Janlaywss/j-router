@@ -22,8 +22,6 @@ class JRouter {
 
         if (history instanceof Html5History) {
             history.transitionTo(history.getCurrentPath())
-        } else if (history instanceof HashHistory) {
-
         }
 
         history.listen((route) => {

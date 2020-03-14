@@ -1,7 +1,8 @@
 export default {
-    render(h) {
-        const current = this.$route.path;
-        const view = this.$router.matcher.pathMap[current];
+    functional: true,
+    render(h, {parent}) {
+        const current = parent.$route.path;
+        const view = parent.$router.matcher.pathMap[current];
         if (!view) {
             return h()
         }
