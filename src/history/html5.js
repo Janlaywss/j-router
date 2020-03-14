@@ -12,6 +12,7 @@ export default class HtmlHistory extends History {
 
     push(raw) {
         this.transitionTo(raw, (route) => {
+            // 进行链接修改跳转
             pushState(route.path)
         })
     }

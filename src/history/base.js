@@ -7,8 +7,11 @@ export default class History {
     }
 
     transitionTo(raw, onComplete, onError) {
+        // 获得匹配的路由记录
         const route = this.router.match(raw);
+        // 路由确认函数
         this.confirmTransition(route, () => {
+            // 更新当前的路由记录
             this.updateState(route);
             onComplete && onComplete(route)
         }, () => {
@@ -21,6 +24,7 @@ export default class History {
     }
 
     confirmTransition(route, onComplete, onError) {
+        // 构造一个队列
         const queue = [].concat(
             this.router.beforeHook
         );
@@ -31,8 +35,10 @@ export default class History {
             onError && onError()
         };
 
+        // 队列迭代器
         const iterator = (hook, next) => {
             hook(route, current, (to) => {
+                // to: next里的参数
                 if (to === false) {
                     abort()
                 } else if (typeof to === 'object' && typeof to === 'string') {
@@ -50,9 +56,13 @@ export default class History {
     }
 
     updateState(route) {
+        // 缓存current，更改current后prev就成跳转前路由了
         const prev = this.current;
+        // 更新当前访问的路由记录
         this.current = route;
+        // 调用回调函数，触发修改_route属性
         this.cb && this.cb(route);
+        // 调用afterEach守卫
         this.router.afterHook && this.router.afterHook.forEach(cb => cb(route, prev))
     }
 }
