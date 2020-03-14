@@ -12,7 +12,7 @@ const routes = [
         component: Index
     },
     {
-        path: '/about',
+        path: '/about/:id',
         name: 'about',
         component: About
     }

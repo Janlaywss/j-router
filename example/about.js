@@ -8,8 +8,7 @@ export default {
     render() {
         const handleClick = (e) => {
             this.count += 1
-        }
-
+        };
         return (
             <div>
                 <span>about</span>

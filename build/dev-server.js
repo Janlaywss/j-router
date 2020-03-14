@@ -10,6 +10,7 @@ module.exports = {
         'j-router': path.join(ROOT_PATH, 'example/app.js'),
     },
     output: {
+        publicPath: '/',
         filename: 'js/[name].js',
         chunkFilename: 'js/[name].chunk.js',
     },
